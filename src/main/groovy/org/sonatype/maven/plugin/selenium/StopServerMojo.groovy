@@ -19,7 +19,7 @@
 
 package org.sonatype.maven.plugin.selenium
 
-import org.codehaus.groovy.maven.mojo.GroovyMojo
+import org.codehaus.gmaven.mojo.GroovyMojo
 
 /**
  * Stop the Selenium server.
@@ -32,38 +32,38 @@ import org.codehaus.groovy.maven.mojo.GroovyMojo
  */
 class StopServerMojo
 extends GroovyMojo {
-	/**
-	 * The port number of the server to connect to.
-	 *
-	 * @parameter expression="${port}" default-value="4444"
-	 */
-	int port
-	
-	/**
-	 * Skip goal execution
-	 *
-	 * @parameter expression="${maven.test.skip}" default-value="false"
-	 */
-	boolean skip
-	
-	//
-	// Mojo
-	//
-	
-	void execute() {
-		if (skip) {
-			log.info('Skipping execution')
-			return
-		}
-		
-		println('Stopping Selenium server...')
-		
-		def url = new URL("http://localhost:$port/selenium-server/driver/?cmd=shutDownSeleniumServer")
-		
-		log.debug("Stop request URL: $url")
-		
-		url.openConnection().content
-		
-		println('Stop request sent')
-	}
+  /**
+   * The port number of the server to connect to.
+   *
+   * @parameter expression="${port}" default-value="4444"
+   */
+  int port
+
+  /**
+   * Skip goal execution
+   *
+   * @parameter expression="${maven.test.skip}" default-value="false"
+   */
+  boolean skip
+
+  //
+  // Mojo
+  //
+
+  void execute() {
+    if (skip) {
+      log.info('Skipping execution')
+      return
+    }
+
+    println('Stopping Selenium server...')
+
+    def url = new URL("http://localhost:$port/selenium-server/driver/?cmd=shutDownSeleniumServer")
+
+    log.debug("Stop request URL: $url")
+
+    url.openConnection().content
+
+    println('Stop request sent')
+  }
 }

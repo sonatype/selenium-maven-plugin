@@ -19,7 +19,7 @@
 
 package org.sonatype.maven.plugin.selenium
 
-import org.codehaus.groovy.maven.mojo.GroovyMojo
+import org.codehaus.gmaven.mojo.GroovyMojo
 
 import org.apache.maven.project.MavenProject
 
